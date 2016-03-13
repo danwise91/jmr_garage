@@ -1,0 +1,22 @@
+<h1> Welcome <%=current_user.first_name%> </h1>
+
+Account Credentials
+<div style="height:120px;width:190px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+  Name: <%=current_user.first_name%> <%= current_user.last_name %><br>
+  Email: <%=current_user.email %>
+</div>
+
+Shipping Information
+<div style="height:200px;width:200px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+  Address 1: <%= current_user.address_one %><br>
+  Address 2: <%= current_user.address_two%><br>
+  State: <%= current_user.state%><br>
+  City: <%= current_user.city%><br>
+  Phone: <%= current_user.phone_number%><br>
+  Country: <%= current_user.country%><br>
+  Zip: <%= current_user.zip%>
+</div>
+
+Admin Rights<br>
+<%= link_to "Create Category", new_category_path(@category)%><br>
+<%= link_to "Add a part", new_part_path(@part)%>

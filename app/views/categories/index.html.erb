@@ -1,0 +1,7 @@
+<br>Current created categories<br>
+<% @categories.each do |category| %>
+<%=category.id%> <%=category.name%> <%= link_to "edit", edit_category_path(id: category.id) %> <%= link_to 'delete',category_path(id: category.id),
+method: :delete, data: { confirm: "Are you sure?"} %><br><br>
+<%=link_to "Add parts to this category", new_part_path(@part)%><br>
+<%end%>
+<%= link_to "profile", user_path(id: current_user.id)%>

@@ -1,0 +1,12 @@
+<h1>Log In</h1>
+
+<%= form_for(@user, url: login_path) do |f|%>
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+<%= f.label :email %>
+<%= f.text_field :email%><br>
+<%= f.label :password %>
+<%= f.password_field :password%><br>
+<%= f.submit "Log In", class: "btn btn-primary", style: "width: 200px" %>
+<%end%>

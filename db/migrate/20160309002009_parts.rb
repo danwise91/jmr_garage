@@ -3,6 +3,7 @@ class Parts < ActiveRecord::Migration
     create_table :parts do |t|
       t.string :name
       t.text :description
-    end 
+      t.integer :category_id 
+    end
   end
 end

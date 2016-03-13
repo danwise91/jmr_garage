@@ -1,0 +1,11 @@
+<h1> Editing part</h1>
+<%= form_for @part do |f|%>
+
+<%= f.label :name%>
+<%= f.text_field :name%><br>
+
+<%= f.label :description%>
+<%= f.text_field :description%><br>
+<%=f.submit%>
+
+<%end%>

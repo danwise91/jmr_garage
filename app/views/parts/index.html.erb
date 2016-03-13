@@ -1,0 +1,6 @@
+<h1> All the parts</h1>
+<% @parts.each do |part| %>
+<%=part.id%><%= part.name %><%= link_to "edit part", edit_part_path(id: part.id)%> <%= link_to 'delete',part_path(id: part.id),
+method: :delete, data: { confirm: "Are you sure?"} %><br>
+<%end%>
+<%= link_to "home", root_path%>
