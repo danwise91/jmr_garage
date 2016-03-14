@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_filter :authorize, :except => :index
+
   def index
     @categories = Category.all
   end
@@ -36,7 +38,7 @@ class CategoriesController < ApplicationController
     @category.destroy
       redirect_to categories_path
     end
-      
+
   private
   def category_params
     params.require(:category).permit(:name)

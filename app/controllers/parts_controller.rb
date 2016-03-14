@@ -1,4 +1,6 @@
 class PartsController < ApplicationController
+  before_filter :authorize, :except => :index
+  
   def index
     @parts = Part.all
   end
@@ -32,7 +34,7 @@ end
     def destroy
       @part = Part.find(params[:id])
       @part.destroy
-        redirect_to parts_path 
+        redirect_to parts_path
     end
 
   private

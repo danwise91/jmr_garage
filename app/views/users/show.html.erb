@@ -18,5 +18,7 @@ Shipping Information
 </div>
 
 Admin Rights<br>
+<%if admin?%>
 <%= link_to "Create Category", new_category_path(@category)%><br>
 <%= link_to "Add a part", new_part_path(@part)%>
+<%end%> 

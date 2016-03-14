@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+gem "figaro"
+
+gem 'omniauth-facebook', '~> 1.4.1'
+
 gem 'bootstrap-sass', '~> 3.3.6'
 
 gem 'pry'
