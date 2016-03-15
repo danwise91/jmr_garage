@@ -1,8 +1,9 @@
 class PartsController < ApplicationController
   before_filter :authorize, :except => :index
-  
+
   def index
     @parts = Part.all
+    @order_item = current_order.order_items.new
   end
 
   def new

@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
+  get 'order_items/create'
+
+  get 'order_items/update'
+
+  get 'order_items/destroy'
+
+  get 'carts/show'
+
   root 'home#index'
 
   get 'auth/:provider/callback', to: 'sessions#create'
@@ -23,5 +32,7 @@ Rails.application.routes.draw do
   resources :users
   resources :parts
   resources :categories
+  resource :cart, only: [:show]
+  resources :order_items, only: [:create, :update, :destroy]
 
 end

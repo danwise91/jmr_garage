@@ -1,9 +1,17 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :logged_in?, :current_order
   include SessionsHelper
 
   helper_method :admin?
+
+  def current_order
+    if !session[:order_id].nil?
+      Order.find(session[:order_id])
+    else
+      Order.new
+      end
+  end
 
   protected
   def authorize

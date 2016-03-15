@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'activeadmin', github: 'activeadmin'
+
 gem "figaro"
 
 gem 'omniauth-facebook', '~> 1.4.1'

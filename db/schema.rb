@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160314133536) do
+ActiveRecord::Schema.define(version: 20160315005747) do
+
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string   "namespace"
+    t.text     "body"
+    t.string   "resource_id",   null: false
+    t.string   "resource_type", null: false
+    t.integer  "author_id"
+    t.string   "author_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -22,10 +37,43 @@ ActiveRecord::Schema.define(version: 20160314133536) do
     t.integer "category_id"
   end
 
+  create_table "order_items", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "order_id"
+    t.decimal  "unit_price",  precision: 12, scale: 3
+    t.integer  "quantity"
+    t.decimal  "total_price", precision: 12, scale: 3
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
+
+  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id"
+  add_index "order_items", ["product_id"], name: "index_order_items_on_product_id"
+
+  create_table "order_statuses", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.decimal  "subtotal",        precision: 12, scale: 3
+    t.decimal  "tax",             precision: 12, scale: 3
+    t.decimal  "shipping",        precision: 12, scale: 3
+    t.decimal  "total",           precision: 12, scale: 3
+    t.integer  "order_status_id"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+  end
+
+  add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id"
+
   create_table "parts", force: :cascade do |t|
     t.string  "name"
     t.text    "description"
     t.integer "category_id"
+    t.integer "price"
+    t.boolean "active"
   end
 
   create_table "users", force: :cascade do |t|
