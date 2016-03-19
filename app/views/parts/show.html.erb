@@ -1,4 +1,18 @@
 <br> <h1>New parts </h1><br>
-<%= @part.name%>
-<%= @part.description%><br>
-<%= link_to "View all parts", parts_path%>
+
+
+  <%= render "part_row", part: @part, order_item: @order_item %>
+
+  <div class="well">
+  <div class="row">
+
+    <div class="col-xs-8">
+      description: <%= @part.description%>
+    </div>
+    <div class="col-xs-4">
+          Category: <%=@part.category.name%>
+        </div> 
+    </div>
+  </div>
+  <%= link_to "Back to Parts", parts_path%>
+</div>

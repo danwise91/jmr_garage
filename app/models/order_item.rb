@@ -11,16 +11,26 @@ class OrderItem < ActiveRecord::Base
   def unit_price
     if persisted?
       self[:unit_price]
+    elsif part.discount?
+      part.apply_discount
     else
       part.price
     end
+  end
+
+
+
+  def total_with_discount
+    part.apply_discount * quantity
   end
 
   def total_price
     unit_price * quantity
   end
 
-  private
+  #create a total_with_discount method here
+
+private
   def part_present
     if part.nil?
       errors.add(:part, "is not valid or is not active.")

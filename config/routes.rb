@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  ActiveAdmin.routes(self)
+
+
   get 'order_items/create'
 
   get 'order_items/update'
@@ -25,9 +26,14 @@ Rails.application.routes.draw do
 
   post 'category/:id/edit', to: 'categories#update'
 
-  post 'part/:id/edit', to: 'parts#update'
+  delete 'category/:id', to: 'categories#destroy'
 
-  delete 'part/:id', to: 'parts#destroy'
+  post 'user/:id/edit', to: 'users#update'
+
+  patch 'parts/:id/edit', to: 'parts#update'
+
+  # delete 'parts/:id', to: 'parts#destroy'
+
 
   resources :users
   resources :parts

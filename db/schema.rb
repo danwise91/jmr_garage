@@ -11,22 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160315005747) do
+ActiveRecord::Schema.define(version: 20160319193725) do
 
-  create_table "active_admin_comments", force: :cascade do |t|
-    t.string   "namespace"
-    t.text     "body"
-    t.string   "resource_id",   null: false
-    t.string   "resource_type", null: false
-    t.integer  "author_id"
-    t.string   "author_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
-  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
-  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -38,7 +26,7 @@ ActiveRecord::Schema.define(version: 20160315005747) do
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.integer  "product_id"
+    t.integer  "part_id"
     t.integer  "order_id"
     t.decimal  "unit_price",  precision: 12, scale: 3
     t.integer  "quantity"
@@ -47,8 +35,8 @@ ActiveRecord::Schema.define(version: 20160315005747) do
     t.datetime "updated_at",                           null: false
   end
 
-  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id"
-  add_index "order_items", ["product_id"], name: "index_order_items_on_product_id"
+  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
+  add_index "order_items", ["part_id"], name: "index_order_items_on_part_id", using: :btree
 
   create_table "order_statuses", force: :cascade do |t|
     t.string   "name"
@@ -66,7 +54,7 @@ ActiveRecord::Schema.define(version: 20160315005747) do
     t.datetime "updated_at",                               null: false
   end
 
-  add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id"
+  add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id", using: :btree
 
   create_table "parts", force: :cascade do |t|
     t.string  "name"
@@ -74,6 +62,8 @@ ActiveRecord::Schema.define(version: 20160315005747) do
     t.integer "category_id"
     t.integer "price"
     t.boolean "active"
+    t.integer "discount"
+    t.string  "image"
   end
 
   create_table "users", force: :cascade do |t|
@@ -93,6 +83,10 @@ ActiveRecord::Schema.define(version: 20160315005747) do
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
     t.string   "name"
+    t.boolean  "admin",            default: false
   end
 
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "order_items", "parts"
+  add_foreign_key "orders", "order_statuses"
 end

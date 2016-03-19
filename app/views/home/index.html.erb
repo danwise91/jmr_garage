@@ -1,6 +1,11 @@
-<h1>welcome</h1>
 
-<h2>Categories</h2>
+<h1 align="left">
+  <%="Categories"%></h1>
 <% @categories.each do |category|%>
-<%= category.name %>
-<%end%> 
+<ol align="left">
+<a href="/categories/<%=category.id%>">
+<%= category.name %><br>
+</ol>
+</a>
+</div>
+<%end%>

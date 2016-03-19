@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  # :confirmable, :lockable, :timeoutable and :omniauthable
   has_secure_password
   validates :email, presence: true
 

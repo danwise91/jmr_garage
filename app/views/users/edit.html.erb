@@ -1,5 +1,5 @@
-<h1>Account Details</h1>
 Account Information:
+<h1> Update Information</h1>
 <%= form_for @user do |f|%>
 <%= f.label :email %>
 <%= f.text_field :email%><br>
@@ -25,12 +25,5 @@ Shipping Information:<br>
 <%= f.text_field :state %><br>
 <%= f.label :zip%>
 <%= f.text_field :zip%><br>
-<div>
-  <p align="center">
-    Working for JMR? Click the Button below to register for admin Access<br>
-<%= f.label :admin%>
-<%= f.check_box :admin%><br>
-</div>
-
 <%= f.submit%>
 <%end%>

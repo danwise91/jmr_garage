@@ -1,3 +1,4 @@
 <br><%=@category.name%>
-<%= link_to "View all Categories", categories_path%>
-<%= link_to "profile", user_path(id: current_user.id)%>
+<% @category.parts.each do |part|%>
+<li><a href="/parts/<%=part.id%>"><%= part.name%></a>
+  <%end%><br>
