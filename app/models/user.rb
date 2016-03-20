@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :email, presence: true
 
+  has_many :conversations, :foreign_key => :sender_id 
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.id).first_or_create do |user|
       user.provider = auth.provider

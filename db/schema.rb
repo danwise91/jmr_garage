@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160319193725) do
+ActiveRecord::Schema.define(version: 20160319210330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,24 @@ ActiveRecord::Schema.define(version: 20160319193725) do
     t.integer "part_id"
     t.integer "category_id"
   end
+
+  create_table "conversations", force: :cascade do |t|
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "conversation_id"
+    t.integer  "user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "order_items", force: :cascade do |t|
     t.integer  "part_id"
@@ -86,6 +104,8 @@ ActiveRecord::Schema.define(version: 20160319193725) do
     t.boolean  "admin",            default: false
   end
 
+  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "users"
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "parts"
   add_foreign_key "orders", "order_statuses"

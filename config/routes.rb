@@ -32,6 +32,7 @@ Rails.application.routes.draw do
 
   patch 'parts/:id/edit', to: 'parts#update'
 
+
   # delete 'parts/:id', to: 'parts#destroy'
 
 
@@ -40,5 +41,8 @@ Rails.application.routes.draw do
   resources :categories
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy]
+  resources :conversations do
+    resources :messages
+  end
 
 end
