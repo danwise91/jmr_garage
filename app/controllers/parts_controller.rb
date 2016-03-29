@@ -4,7 +4,6 @@ class PartsController < ApplicationController
   def index
     @parts = Part.all
     @categories = Category.all
-    @order_item = current_order.order_items.new
     @parts = @parts.search(params[:search]) if params[:search].present?
   end
 
@@ -14,7 +13,6 @@ class PartsController < ApplicationController
 
   def show
     @part = Part.find(params[:id])
-    @order_item = current_order.order_items.new
   end
 
   def create

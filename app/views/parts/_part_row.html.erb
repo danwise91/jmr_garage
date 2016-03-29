@@ -14,7 +14,7 @@
     </div>
     <div class="col-xs-4">
 
-      <%= form_for order_item, remote: true do |f| %>
+      <%= form_for part, remote: true do |f| %>
       <%if part.discount?%>
       <h4 class="text-right">Discount! <%= part.discount%>%<br>Unit Price: <span style="color: green"><%= number_to_currency part.apply_discount %>
       </span></h4><%end%>

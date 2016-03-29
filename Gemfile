@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'jquery-ui-rails'
+
 gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.3'
 gem "figaro"

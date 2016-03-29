@@ -15,9 +15,13 @@
 
 <div class="row">
   <div class="col-xs-6 col-xs-offset-3">
-    <% @parts.each do |part| %>
-      <%= render "part_row", part: part, order_item: @order_item %>
-    <% end %>
+    <% @parts.each do |part|%>
+    <%= part.name%>
+    <%= part.description%>
+    <%= number_to_currency(part.price)%>
+    <%= button_to 'Add to Cart', line_items_path(part_id: part),
+        remote: true%>
   </div>
 </div>
+<%end%>
 <%= link_to "home", root_path%>
