@@ -13,9 +13,12 @@ class SessionsController < ApplicationController
       @user = User.new if @user.blank?
     if @user && @user.authenticate(params[:user][:password])
         session[:user_id] = @user.id
-        @cart = Cart.find_by_id(params[:id])
-        @user.cart = @cart
-        @user.save
+        if @user.cart
+          @cart = @user.cart
+        else
+          @user.cart = Cart.create
+        end
+          @user.save
           redirect_to @user
       else
         flash[:notice] = "Failed to login, please try again"
