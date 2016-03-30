@@ -2,13 +2,10 @@
     <%= render(cart.line_items) %>
 <tr class="total_line">
 <td colspan="2">Total</td>
-<%unless line_item.line_item_discount?%>
-<td class="total_cell"><%= number_to_currency(cart.total_price) %></td>
-<%end%>
 
-<%if part.discount?%>
-<td class="total_cell"><%= number_to_currency(cart.total_price_with_discount) %></td>
-<%end%>
+<td class="total_cell"><%= number_to_currency(cart.total_price) %></td>
+
+
     </tr>
   </table>
 
