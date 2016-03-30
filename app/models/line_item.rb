@@ -9,7 +9,7 @@ class LineItem < ActiveRecord::Base
 
   def line_item_discount
     return 0 if part.discount.blank?
-    part.price - ((part.discount.to_f/100 * part.price) * quantity)
+    (part.discount.to_f/100*part.price) * quantity
   end
 
 end
