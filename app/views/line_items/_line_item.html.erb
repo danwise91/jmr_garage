@@ -1,9 +1,10 @@
-<% if line_item == @current_part%>
-<tr id="current_part">
-  <%else%>
 <tr>
-  <%end%>
   <td><%= line_item.quantity %> &times;</td>
   <td><%= line_item.part.name%></td>
+  <%unless line_item.part.discount?%>
   <td class="item_price"><%= number_to_currency(line_item.total_price)%></td>
+  <%end%>
+  <%if line_item.part.discount?%>
+  <td class="item_price"><%= number_to_currency(line_item.line_item_discount)%></td>
+  <%end%>
 </tr>

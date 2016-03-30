@@ -16,8 +16,11 @@
 <div class="row">
   <div class="col-xs-6 col-xs-offset-3">
     <% @parts.each do |part|%>
-    <%= part.name%>
-    <%= part.description%>
+    <%= part.name%><br>
+    <%= part.description%><br>
+    <%if part.discount?%>
+    Discount! <%= part.discount%>%<br>
+    <%end%>
     <%= number_to_currency(part.price)%>
     <%= button_to 'Add to Cart', line_items_path(part_id: part),
         remote: true%>

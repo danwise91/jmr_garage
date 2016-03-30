@@ -5,5 +5,9 @@ class LineItem < ActiveRecord::Base
   def total_price
     part.price * quantity
   end
-  
+
+  def line_item_discount
+    part.price - (part.discount.to_f/100 * part.price) * quantity
+  end
+
 end

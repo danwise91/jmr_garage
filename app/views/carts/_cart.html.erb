@@ -1,17 +1,15 @@
-<%=link_to "View Your Cart", cart_path(@cart)%>
-
-<%if logged_in?%>
-<h2>Your Cart</h2>
-
-<table>
-  <%= render(cart.line_items)%>
-
-  <tr class="total_line">
-    <td colspan="2">Total</td>
-    <td class="total_cell"><%= number_to_currency(cart.total_price)%></td>
-  </tr>
-</table>
-
-<%= button_to 'Empty cart', cart, method: :delete,
-data: { confirm: "Are you sure?" }%>
+<h2>Your Cart</h2> <table>
+    <%= render(cart.line_items) %>
+<tr class="total_line">
+<td colspan="2">Total</td>
+<%unless line_item.line_item_discount?%>
+<td class="total_cell"><%= number_to_currency(cart.total_price) %></td>
 <%end%>
+
+<%if part.discount?%>
+<td class="total_cell"><%= number_to_currency(cart.total_price_with_discount) %></td>
+<%end%>
+    </tr>
+  </table>
+
+<%= button_to 'Empty cart', cart, method: :delete, data: { confirm: 'Are you sure?' } %>
