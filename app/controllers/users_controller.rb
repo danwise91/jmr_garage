@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
       if @user.save
+        @user.cart = Cart.create
+        @user.save 
         session[:user_id] = @user.id
         redirect_to @user
       else
