@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
   <title>JmrWeb</title>
 
   <% if request.ssl? %>
