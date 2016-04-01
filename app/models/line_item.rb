@@ -1,4 +1,5 @@
 class LineItem < ActiveRecord::Base
+  belongs_to :order 
   belongs_to :part
   belongs_to :cart
   scope :with_discounted_part, -> { joins(:part).where.not(part: { discount: nil }) }

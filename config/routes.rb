@@ -52,6 +52,7 @@ Rails.application.routes.draw do
   resources :users
   resources :parts
   resources :carts
+  resources :orders 
   resources :categories
   resources :line_items
   resource :cart, only: [:show]
