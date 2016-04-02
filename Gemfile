@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'activemerchant', '~> 1.46.0'
 gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.3'
 gem "figaro"
