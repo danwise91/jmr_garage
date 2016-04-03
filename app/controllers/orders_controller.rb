@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   def index
-    @orders = Order.all 
+    @orders = Order.all
   end
 
   def new
@@ -25,18 +25,19 @@ class OrdersController < ApplicationController
         session[:cart_id] = nil
 
         format.html { redirect_to root_path, notice:
-              'Thank you for your order.'}
+              'Thank you for your order. You have been successfully charged'}
         format.json { render action: 'show', status: :created,
               location: @order}
         else
           format.html {render action: 'new'}
           format.json {render json: @order.errors,
                 status: :unprocessable_entity}
+         end
       end
-    end
   end
   private
+
   def order_params
-    params.require(:order).permit(:name, :address, :email, :pay_type)
+    params.require(:order).permit(:name, :address, :email, :pay_type, :credit_card_number, :expiration_month, :expiration_year, :card_security_code, :amount)
     end
 end
