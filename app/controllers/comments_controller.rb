@@ -7,7 +7,14 @@ class CommentsController < ApplicationController
       format.html {redirect_to part}
       format.js{}
   end
-end 
+end
+
+  def destroy
+    @comment = part.comments.find(params[:id])
+    @comment.destroy
+      format.html {redirect_to part}
+      format.js{}
+  end
 
 private
 def comment_params

@@ -1,3 +1,5 @@
+require "active_merchant"
+
 if Rails.env == "development"
     ActiveMerchant::Billing::FirstdataE4Gateway.wiredump_device = File.open(Rails.root.join("log","active_merchant.log"), "a+")
     ActiveMerchant::Billing::FirstdataE4Gateway.wiredump_device.sync = true
@@ -10,7 +12,15 @@ elsif Rails.env == "production"
   password = ENV['GATE_PASS']
 end
 
-GATEWAY = ActiveMerchant::Billing::FirstdataE4Gateway.new({
+STANDARD_GATEWAY = ActiveMerchant::Billing::FirstdataE4Gateway.new({
       login: login,
       password: password
 })
+
+paypal = {
+  :login => ENV['EXPRESS_GATE_ID']
+  :password => ENV['EXPRESS_GATE_PASS']
+  :signature => ENV['SIGNATURE']
+}
+
+  EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal)

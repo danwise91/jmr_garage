@@ -13,6 +13,24 @@ class Cart < ActiveRecord::Base
     current_part
   end
 
+  def paypal_url(return_url)
+  values = {
+    :business => 'seller_1229899173_biz@railscasts.com',
+    :cmd => '_cart',
+    :upload => 1,
+    :return => return_url,
+    :invoice => id
+  }
+  line_items.each_with_index do |item, index|
+    values.merge!({
+      "item_name_#{index+1}" => item.part.name,
+      "item_number_#{index+1}" => item.id,
+      "quantity_#{index+1}" => item.quantity
+    })
+  end
+  "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
+end
+
   def total_price
     line_items.to_a.sum { |item| item.total_price}
   end

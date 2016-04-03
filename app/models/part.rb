@@ -1,7 +1,7 @@
 class Part < ActiveRecord::Base
   has_many :order_items
   has_many :line_items
-  has_many :comments 
+  has_many :comments
 
   before_destroy :ensure_not_referenced_by_any_line_item
 
@@ -29,6 +29,8 @@ end
   def apply_discount
     price - (discount.to_f/100 * price)
   end
+
+  
 
   def self.search(search)
   if search
