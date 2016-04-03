@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  get 'comments/create'
+
   get 'line_items/index'
 
   get 'line_items/show'
@@ -50,9 +52,11 @@ Rails.application.routes.draw do
 
 
   resources :users
-  resources :parts
+  resources :parts do
+    resources :comments, only: [:create]
+  end
   resources :carts
-  resources :orders 
+  resources :orders
   resources :categories
   resources :line_items
   resource :cart, only: [:show]

@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  has_one :cart 
+  has_one :cart
+  has_many :comments 
   # :confirmable, :lockable, :timeoutable and :omniauthable
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_secure_password
