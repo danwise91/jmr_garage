@@ -7,10 +7,6 @@
         Image:<%= image_tag part.image.thumb.url %>
       </strong></p>
       <h4><%= part.name %></small></h4>
-      <% if current_user.admin?%>
-      <%= link_to "edit part", edit_part_path(id: part.id)%>
-      <%= link_to 'delete', part_path(part), data: {confirm: "Are you sure you wish to delete the part '#{part.name}'?"},method: 'DELETE' %><br>
-      <%end%>
     </div>
     <div class="col-xs-4">
 
@@ -28,6 +24,11 @@
           </div>
         </div>
       <% end %>
+
+      <% if logged_in? && current_user.admin?%>
+      <%= link_to "edit part", edit_part_path(id: part.id)%>
+      <%= link_to 'delete', part_path(part), data: {confirm: "Are you sure you wish to delete the part '#{part.name}'?"},method: 'DELETE' %><br>
+      <%end%>
     </div>
 
   </div>
