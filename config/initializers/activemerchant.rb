@@ -16,11 +16,3 @@ STANDARD_GATEWAY = ActiveMerchant::Billing::FirstdataE4Gateway.new({
       login: login,
       password: password
 })
-
-paypal = {
-  :login => ENV['EXPRESS_GATE_ID']
-  :password => ENV['EXPRESS_GATE_PASS']
-  :signature => ENV['SIGNATURE']
-}
-
-  EXPRESS_GATEWAY = ActiveMerchant::Billing::PaypalExpressGateway.new(paypal)

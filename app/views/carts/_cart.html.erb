@@ -7,7 +7,7 @@
     </tr>
   </table>
 
-<%= link_to ("paypal checkout "), @cart.paypal_url(parts_url) %>
+<%= link_to ("paypal checkout"), @cart.paypal_url(parts_url) %>
 
 <%= button_to "Checkout", new_order_path, method: :get %>
 <%= button_to 'Empty cart', cart, method: :delete, data: { confirm: 'Are you sure?' } %>

@@ -15,7 +15,7 @@ class Cart < ActiveRecord::Base
 
   def paypal_url(return_url)
   values = {
-    :business => 'seller_1229899173_biz@railscasts.com',
+    :business => 'jmrgarage@gmail.com',
     :cmd => '_cart',
     :upload => 1,
     :return => return_url,
@@ -24,7 +24,7 @@ class Cart < ActiveRecord::Base
   line_items.each_with_index do |item, index|
     values.merge!({
       "item_name_#{index+1}" => item.part.name,
-      "item_number_#{index+1}" => item.id,
+      "item_number_#{index+1}" => item.part.id,
       "quantity_#{index+1}" => item.quantity
     })
   end

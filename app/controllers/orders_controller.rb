@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        current_user.cart.destroy
+        current_user.cart.line_items.destroy
         session[:cart_id] = nil
 
         format.html { redirect_to root_path, notice:
