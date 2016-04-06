@@ -1,11 +1,11 @@
 
 <h1 align="left">
   <%="Categories"%></h1>
-<% @categories.each do |category|%>
+<% @categories.sort_by(&:name).each do |category|%>
 <ol align="left">
 <a href="/categories/<%=category.id%>">
-<%= category.name%><br>
+  <%= category.name%> 
 </ol>
+<%end%>
 </a>
 </div>
-<%end%>

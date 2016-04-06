@@ -15,7 +15,7 @@
 
 <div class="row">
   <div class="col-xs-6 col-xs-offset-3">
-    <% @parts.each do |part|%>
+    <% @parts.sort_by(&:name).each do |part|%>
     <%= part.name%><br>
     <%= part.description%><br>
     <%if part.discount?%>

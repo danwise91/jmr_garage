@@ -1,6 +1,6 @@
 <br>Categories<br>
-<% @categories.each do |category| %>
-<%=category.id%> <%=category.name%><br>
+<% @categories.sort_by(&:name).each do |category| %>
+<%=category.id%> <%=category.name.capitalize%><br>
 
 <%= link_to "edit", edit_category_path(id: category.id) %> <%= link_to 'delete',category_path(id: category.id),
 method: :delete, data: { confirm: "Are you sure?"} %><br><br>
