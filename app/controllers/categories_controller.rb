@@ -16,6 +16,7 @@ class CategoriesController < ApplicationController
   def create
   @category = Category.new(category_params)
     if @category.save
+      session[:category_id] = @category.id
       redirect_to @category
     else
       render 'new'
@@ -30,7 +31,9 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
       if @category.update_attributes(category_params)
         redirect_to @category
-      end
+      else
+        render 'update'
+          end
   end
 
   def destroy
