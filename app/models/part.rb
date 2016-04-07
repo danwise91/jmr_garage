@@ -1,4 +1,5 @@
 class Part < ActiveRecord::Base
+
   has_many :order_items
   has_many :line_items
   has_many :comments
@@ -30,7 +31,7 @@ end
     price - (discount.to_f/100 * price)
   end
 
-  
+
 
   def self.search(search)
   if search

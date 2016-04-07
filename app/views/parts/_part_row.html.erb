@@ -10,17 +10,14 @@
     </div>
     <div class="col-xs-4">
 
-      <%= form_for part, remote: true do |f| %>
+      <%= form_for part  do |f| %>
       <%if part.discount?%>
       <h4 class="text-right">Discount! <%= part.discount%>%<br>Unit Price: <span style="color: green"><%= number_to_currency part.apply_discount %>
       </span></h4><%end%>
       <%unless part.discount?%><h4 class="text-right">Unit Price: <span style="color: green"><%= number_to_currency part.price %></span></h4>
       <%end%>
         <div class="input-group">
-          <%= f.number_field :quantity, value: 0, class: "form-control", min: 1 %>
-          <div class="input-group-btn">
             <%= f.hidden_field :part_id, value: part.id %>
-            <%= f.submit "Add to Cart", class: "btn btn-primary" %>
           </div>
         </div>
       <% end %>
