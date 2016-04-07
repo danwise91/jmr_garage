@@ -41,7 +41,7 @@ end
 
   private
   def part_params
-    params.require(:part).permit(:description, :name, :price, :active, :image, :remove_image, :discount, :category_id)
+    params.require(:part).permit(:description, :name, :price, :active, :avatar, :discount, :category_id)
   end
 
 end
