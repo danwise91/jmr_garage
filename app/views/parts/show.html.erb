@@ -11,7 +11,21 @@
     </div>
     <div class="col-xs-4">
           Category: <%=@part.category.name%>
-        </div> 
+        </div>
+          <div align="right">
+                <%= button_to 'Add to Cart', line_items_path(part_id: @part),
+                      remote: true, class: "btn btn-primary" %>
+                    </div>
+        <%= form_for [@part, Comment.new], remote: true do |f|%>
+        <div>
+          <%= f.text_area :content %>
+          <%= f.submit "Post Comment"%>
+        </div>
+        <%end%>
+
+        <ul class="comments">
+          <%= render @part.comments%>
+        </ul>
     </div>
   </div>
   <%= link_to "Back to Parts", parts_path%>

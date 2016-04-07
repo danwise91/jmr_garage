@@ -1,6 +1,22 @@
 Rails.application.routes.draw do
 
 
+  get 'comments/create'
+
+  get 'line_items/index'
+
+  get 'line_items/show'
+
+  get 'line_items/new'
+
+  get 'line_items/edit'
+
+  get 'line_items/create'
+
+  get 'line_items/update'
+
+  get 'line_items/destroy'
+
   get 'order_items/create'
 
   get 'order_items/update'
@@ -32,12 +48,21 @@ Rails.application.routes.draw do
 
   patch 'parts/:id/edit', to: 'parts#update'
 
+  delete 'comment/:id', to: 'comments#destroy'
+
+  get "paypal_express/checkout"
+
   # delete 'parts/:id', to: 'parts#destroy'
 
 
   resources :users
-  resources :parts
+  resources :parts do
+    resources :comments, only: [:create, :destroy]
+  end
+  resources :carts
+  resources :orders
   resources :categories
+  resources :line_items
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy]
 

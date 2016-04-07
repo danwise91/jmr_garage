@@ -1,8 +1,15 @@
 class User < ActiveRecord::Base
+  validates :email, uniqueness: true
+  validates :password, length: {minimum: 8}
+  has_one :cart
+  has_many :comments
   # :confirmable, :lockable, :timeoutable and :omniauthable
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_secure_password
   validates :email, presence: true
+
+
+
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.id).first_or_create do |user|

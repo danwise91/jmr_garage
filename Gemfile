@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+gem 'paperclip'
+gem 'aws-sdk'
+
+gem 'activemerchant', '~> 1.46.0'
 gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.3'
 gem "figaro"

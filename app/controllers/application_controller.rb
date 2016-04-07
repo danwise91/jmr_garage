@@ -1,17 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
-  helper_method :current_user, :logged_in?, :current_order
+  helper_method :current_user, :logged_in?
+  before_action :set_cart
   include SessionsHelper
-
-
-  def current_order
-    if !session[:order_id].nil?
-      Order.find(session[:order_id])
-    else
-      Order.new
-      end
-  end
-
+  include CurrentCart
   protected
   def authorize
     unless current_user.admin?
