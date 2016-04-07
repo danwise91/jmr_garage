@@ -28,7 +28,7 @@ class Cart < ActiveRecord::Base
         "item_name_#{index+1}" => item.part.name,
         "item_number_#{index+1}" => item.part.id,
         "quantity_#{index+1}" => item.quantity,
-        "amount_#{index + 1}" => item.part.price
+        "amount_#{index + 1}" => item.part.apply_discount
       })
     end
   link = "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
