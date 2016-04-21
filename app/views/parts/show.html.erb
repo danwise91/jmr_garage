@@ -6,12 +6,14 @@
   <div class="well">
   <div class="row">
 
+    <div id="fb-root"></div>
+
+
     <div class="col-xs-8">
       description: <%= @part.description%>
     </div>
-    <div class="col-xs-4">
-          Category: <%=@part.category.name%>
         </div>
+
           <div align="right">
                 <%= button_to 'Add to Cart', line_items_path(part_id: @part),
                       remote: true, class: "btn btn-primary" %>

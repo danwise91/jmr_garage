@@ -48,8 +48,6 @@ Rails.application.routes.draw do
 
   patch 'parts/:id/edit', to: 'parts#update'
 
-  delete 'comment/:id', to: 'comments#destroy'
-
   get "paypal_express/checkout"
 
   # delete 'parts/:id', to: 'parts#destroy'

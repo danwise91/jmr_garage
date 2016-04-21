@@ -3,8 +3,22 @@
 
   <div class="row">
     <div class="col-xs-8">
-    <p><strong>
-      <h4><%= part.name %></small></h4>
+
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
+    <h4><%= part.name %></small></h4>
+      <div class="fb-like" data-href="http://localhost:3000/parts/14" data-layout="button_count"
+       data-action="like" data-show-faces="true" data-share="true"></div>
+    
+        Category: <%=@part.category.name%>
+    </head>
         Image:<%= image_tag part.avatar.url(:square)%>
       </strong></p>
     </div>
