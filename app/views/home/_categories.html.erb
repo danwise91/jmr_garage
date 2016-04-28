@@ -1,0 +1,22 @@
+<style>
+.div1 {
+    width: 200px;
+    height: 90px;
+    border: 1px solid blue;
+}
+</style>
+
+<% @categories.sort_by(&:name).each do |category|%>
+
+<div class="col-md-4">
+
+<a href="/categories/<%=category.id%>">
+  <div class="div1">
+  <h3><%= category.name%></h3>
+</div>
+    </div>
+<%end%>
+
+  </div>
+</a>
+</div>

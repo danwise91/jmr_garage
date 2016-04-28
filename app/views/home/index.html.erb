@@ -1,62 +1,17 @@
-<style>
-.div1 {
-    width: 200px;
-    height: 90px;
-    border: 1px solid blue;
-}
 
-</style>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  #section1 {padding-top:50px;height:500px;color: #fff; }
+  #section2 {padding-top:50px;height:600px;color: #fff;}
+  </style>
+</head>
 
-<% @categories.sort_by(&:name).each do |category|%>
-
-<div class="col-md-4">
-
-<a href="/categories/<%=category.id%>">
-  <div class="div1">
-  <h3><%= category.name%></h3>
-</div>
-    </div>
-<%end%>
-
-  </div>
-</a>
+<div id="section1">
+<%=render"home/carousel"%>
 </div>
 
-<div id="Carousel" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#Carousel" data-slide-to="0" class="active"></li>
-    <li data-target="#Carousel" data-slide-to="1"></li>
-    <li data-target="#Carousel" data-slide-to="2"></li>
-    <li data-target="#Carousel" data-slide-to="3"></li>
-  </ol>
-
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-
-    </div>
-
-    <div class="part">
-
-    </div>
-
-    <div class="part">
-
-    </div>
-
-    <div class="part">
-
-    </div>
-  </div>
-
-  <!-- Left and right controls -->
-  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
+<div id="section2">
+<%=render"home/categories"%>
 </div>
