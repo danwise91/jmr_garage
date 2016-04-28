@@ -4,7 +4,7 @@
   <% if flash[:notice] %>
     <div class="notice"><%= flash[:notice] %></div>
   <% end %>
-  <title>JmrWeb</title>
+  <title>Speedway Garage</title>
 
   <% if request.ssl? %>
   <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css' %>
@@ -46,6 +46,8 @@
               <%= link_to "Parts", parts_path%>
             </li>
 
+
+
       </div>
     </div>
   </nav>
@@ -55,7 +57,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-6">
-      <h1><%= link_to "JMR Garage", root_path %></h1>
+      <h1><%= link_to "SpeedWay Garage", root_path %></h1>
     </div>
     <% if current_user && current_user.cart%>
     <div id="cart">
