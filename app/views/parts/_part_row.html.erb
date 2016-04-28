@@ -1,6 +1,4 @@
 <div class="well">
-
-
   <div class="row">
     <div class="col-xs-8">
   <head>
@@ -24,21 +22,26 @@
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));</script>
 
+  <div align="center">
+    <h3><%=@part.category.name%></h3>
     <h4><%= part.name %></small></h4>
-      <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="50" data-layout="standard"
-       data-action="like" data-show-faces="true" data-share="true"></div>
+  </head>
+  <%= image_tag part.avatar.url(:square)%>
+</div>
+</strong></p>
+</div>
 </body>
 
-        Category: <%=@part.category.name%>
-    </head>
-        Image:<%= image_tag part.avatar.url(:square)%>
-      </strong></p>
+    <div align="left">
+      <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="50" data-layout="standard"
+      data-action="like" data-show-faces="true" data-share="true"></div>
     </div>
-    <div class="col-xs-4">
 
+    <div align="center">
       <%= form_for part  do |f| %>
       <%if part.discount?%>
       <h4 class="text-right">Discount! <%= part.discount%>%<br>Unit Price: <span style="color: green"><%= number_to_currency part.apply_discount %>
+</div>
       </span></h4><%end%>
       <%unless part.discount?%><h4 class="text-right">Unit Price: <span style="color: green"><%= number_to_currency part.price %></span></h4>
       <%end%>
@@ -48,10 +51,12 @@
         </div>
       <% end %>
 
+<div align="right">
       <% if logged_in? && current_user.admin?%>
       <%= link_to "edit part", edit_part_path(id: part.id)%>
-      <%= link_to 'delete', part_path(part), data: {confirm: "Are you sure you wish to delete the part '#{part.name}'?"},method: 'DELETE' %><br>
+      <%= link_to 'delete', part_path(part), data: {confirm: "Are you sure you wish to delete the part '#{part.name}'?"}, method: 'DELETE' %><br>
       <%end%>
+    </div>
     </div>
 
   </div>

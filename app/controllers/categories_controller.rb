@@ -3,6 +3,7 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.all
+    @parts = Part.all 
   end
 
   def new

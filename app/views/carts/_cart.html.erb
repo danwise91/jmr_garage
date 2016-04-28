@@ -8,15 +8,14 @@
 <td class="total_cell"><%= number_to_currency(cart.total_price) %></td>
     </tr>
   </table>
-<div>
-
-<img >
+<div align="right">
 
 <% unless current_user.admin?%>
-<%= link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), @cart.paypal_url(parts_url) %>
-<%end%> 
+<%= link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), @cart.paypal_url(parts_url) %><%end%>
+<%= button_to "Checkout", new_order_path, method: :get %>
+</div>
 
+<div align="center">
+<%= button_to 'Empty cart', cart, method: :delete, data: { confirm: 'Are you sure?' } %>
 </form>
 </div>
-<%= button_to "Checkout", new_order_path, method: :get %>
-<%= button_to 'Empty cart', cart, method: :delete, data: { confirm: 'Are you sure?' } %>
