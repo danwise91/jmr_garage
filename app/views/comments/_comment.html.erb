@@ -1,4 +1,5 @@
-<li><%= comment.content%> by: <%=comment.user.first_name%> </li>
-<% if logged_in? %>
-<%=link_to 'delete', part_path(comment), data: {confirm: "Are you sure you want to delete this comment?"}, method: 'DELETE'%>
-<%end%> 
+<%if logged_in?%>
+<div>
+<li><%= comment.content%> by: <%= comment.user.first_name %> </li>
+</div>
+<%end%>

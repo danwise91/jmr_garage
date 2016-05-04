@@ -1,17 +1,19 @@
-<br> <h1>New parts </h1><br>
-
-
   <%= render "part_row", part: @part, order_item: @order_item %>
 
   <div class="well">
   <div class="row">
 
-    <div class="col-xs-8">
-      description: <%= @part.description%>
+    <div id="fb-root"></div>
+
+
+
+      <div align="center">
+    <h3>Description:</h3>
+    <h4><%= @part.description%></h4>
     </div>
-    <div class="col-xs-4">
-          Category: <%=@part.category.name%>
-        </div>
+
+
+
           <div align="right">
                 <%= button_to 'Add to Cart', line_items_path(part_id: @part),
                       remote: true, class: "btn btn-primary" %>
@@ -28,5 +30,4 @@
         </ul>
     </div>
   </div>
-  <%= link_to "Back to Parts", parts_path%>
 </div>

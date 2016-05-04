@@ -1,18 +1,47 @@
 <div class="well">
-
-
   <div class="row">
     <div class="col-xs-8">
-    <p><strong>
-      <h4><%= part.name %></small></h4>
-        Image:<%= image_tag part.avatar.url(:square)%>
-      </strong></p>
-    </div>
-    <div class="col-xs-4">
+  <head>
+    <!-- You can use open graph tags to customize link previews.
+    Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
+	<meta property="og:url"           content="http://http://localhost:3000/parts" />
+	<meta property="og:type"          content="website" />
+	<meta property="og:title"         content="JMR" />
+	<meta property="og:description"   content="Garage" />
+	<meta property="og:image"         content="" />
+</head>
 
+<body>
+
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
+  <div align="center">
+    <h3><%=@part.category.name%></h3>
+    <h4><%= part.name %></small></h4>
+  </head>
+  <%= image_tag part.avatar.url(:square)%>
+</div>
+</strong></p>
+</div>
+</body>
+
+    <div align="left">
+      <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="50" data-layout="standard"
+      data-action="like" data-show-faces="true" data-share="true"></div>
+    </div>
+
+    <div align="center">
       <%= form_for part  do |f| %>
       <%if part.discount?%>
       <h4 class="text-right">Discount! <%= part.discount%>%<br>Unit Price: <span style="color: green"><%= number_to_currency part.apply_discount %>
+</div>
       </span></h4><%end%>
       <%unless part.discount?%><h4 class="text-right">Unit Price: <span style="color: green"><%= number_to_currency part.price %></span></h4>
       <%end%>
@@ -22,10 +51,12 @@
         </div>
       <% end %>
 
+<div align="right">
       <% if logged_in? && current_user.admin?%>
       <%= link_to "edit part", edit_part_path(id: part.id)%>
-      <%= link_to 'delete', part_path(part), data: {confirm: "Are you sure you wish to delete the part '#{part.name}'?"},method: 'DELETE' %><br>
+      <%= link_to 'delete', part_path(part), data: {confirm: "Are you sure you wish to delete the part '#{part.name}'?"}, method: 'DELETE' %><br>
       <%end%>
+    </div>
     </div>
 
   </div>

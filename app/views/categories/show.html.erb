@@ -1,4 +1,18 @@
-<br><%=@category.name%>
+
+<div align="center">
+
+<h1><br><%=@category.name%><br></h1>
 <% @category.parts.each do |part|%>
-<li><a href="/parts/<%=part.id%>"><%= part.name%></a>
+
+<div class="well">
+  <div class="row">
+<%=image_tag part.avatar.url(:square)%> <a href="/parts/<%=part.id%>"><%= part.name%> $<%= part.price%>
+<%if part.discount?%>
+Discounted Today!!!
+<%end%>
+</a>
   <%end%><br>
+      </div>
+    </div>
+  </div>
+</div>

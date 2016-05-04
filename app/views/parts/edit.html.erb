@@ -15,12 +15,12 @@
 
 <%= f.select :category, Category.all.map {|c| [c.name]}, :prompt => @part.category%>
 <div class="field">
-  <%= f.label :image %><br>
-  <%= f.file_field :image %>
+  <%= f.label :avatar %><br>
+  <%= f.file_field :avatar %>
   <% if f.object.image? %>
      <%= image_tag f.object.image.thumb.url %>
-     <%= f.label :remove_image %>
-     <%= f.check_box :remove_image %>
+     <%= f.label :remove_avatar %>
+     <%= f.check_box :remove_avatar %>
    <% end %>
 </div><br>
 <%=f.submit%>

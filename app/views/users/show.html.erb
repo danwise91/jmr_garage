@@ -2,14 +2,27 @@
 <h1> Welcome <%=current_user.first_name%> </h1>
 
 <% if current_user.admin? %>
-<%="admin"%><br>
+This user is an <%="admin"%><br>
 <%end%>
 
-Account Credentials
+Account Credentials<br>
+<%= link_to "Update User Information", edit_user_path(current_user)%>
 <div style="height:120px;width:190px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
   Name: <%=current_user.first_name%> <%= current_user.last_name %><br>
   Email: <%=current_user.email %>
 </div>
+
+<% if current_user.admin?%>
+<p align= "center">
+  Admin Rights<br>
+  View all Categories:
+  <%= link_to "Categories", categories_path%><br>
+  Create A New Category:
+  <%= link_to "Create Category", new_category_path(@category)%><br>
+  Add A New Part To a Category:
+  <%= link_to "Add a part", new_part_path(@part)%>
+  <%end%>
+</p>
 
 Shipping Information
 <div style="height:200px;width:200px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
@@ -21,15 +34,3 @@ Shipping Information
   Country: <%= current_user.country%><br>
   Zip: <%= current_user.zip%>
 </div>
-
-<p align= "center"><% if current_user.admin?%> <%= link_to "Categories", categories_path%> <%end%>
-</p>
-
-
-
-Admin Rights<br>
-<%= link_to "Update User Information", edit_user_path%>
-<%if current_user.admin?%>
-<%= link_to "Create Category", new_category_path(@category)%><br>
-<%= link_to "Add a part", new_part_path(@part)%>
-<%end%>

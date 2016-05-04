@@ -1,11 +1,22 @@
 
-<h1 align="left">
-  <%="Categories"%></h1>
-<% @categories.sort_by(&:name).each do |category|%>
-<ol align="left">
-<a href="/categories/<%=category.id%>">
-  <%= category.name%> 
-</ol>
-<%end%>
-</a>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  #section1 {padding-top:50px;height:500px;color: #fff; }
+  #section2 {padding-top:50px;height:600px;color: #fff;}
+  #section3 {padding-top:50px;height:200px;}
+  </style>
+</head>
+
+<div id="section1">
+<%=render"home/carousel"%>
+</div>
+
+<div id="section2">
+<%=render"home/categories"%>
+</div>
+
+<div id="section3">
+  <%= render"home/footer"%>
 </div>

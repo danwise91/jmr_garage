@@ -1,10 +1,20 @@
 <!DOCTYPE html>
+<style>
+.dropdown-menu {
+  left: 50%;
+  right: auto;
+  text-align: center;
+  transform: translate(250%, 0);
+}
+}
+</style>
+
 <html>
 <head>
   <% if flash[:notice] %>
     <div class="notice"><%= flash[:notice] %></div>
   <% end %>
-  <title>JmrWeb</title>
+  <title>Speedway Garage</title>
 
   <% if request.ssl? %>
   <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css' %>
@@ -45,11 +55,21 @@
           <li class="">
               <%= link_to "Parts", parts_path%>
             </li>
-
-
-
-
       </div>
+
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle"  id="dropdownMenu1"
+        data-toggle= "dropdown" aria-haspopup="true" aria-expanded="true">
+        Our Services
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li><a href="/oil_change">Oil Change</a></li>
+        <li><a href="/tunning">Tuning</a></li>
+        <li><a href="/adjustments">Adjustments</a></li>
+      </ul>
+
+    </div>
     </div>
   </nav>
 
@@ -58,7 +78,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-6">
-      <h1><%= link_to "JMR Garage", root_path %></h1>
+      <h1><%= link_to "SpeedWay Garage", root_path %></h1>
     </div>
     <% if current_user && current_user.cart%>
     <div id="cart">
