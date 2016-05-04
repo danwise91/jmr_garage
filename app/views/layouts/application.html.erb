@@ -1,4 +1,14 @@
 <!DOCTYPE html>
+<style>
+.dropdown-menu {
+  left: 50%;
+  right: auto;
+  text-align: center;
+  transform: translate(250%, 0);
+}
+}
+</style>
+
 <html>
 <head>
   <% if flash[:notice] %>
@@ -45,10 +55,21 @@
           <li class="">
               <%= link_to "Parts", parts_path%>
             </li>
-
-
-
       </div>
+
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle"  id="dropdownMenu1"
+        data-toggle= "dropdown" aria-haspopup="true" aria-expanded="true">
+        Our Services
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li><a href="/oil_change">Oil Change</a></li>
+        <li><a href="/tunning">Tuning</a></li>
+        <li><a href="/adjustments">Adjustments</a></li>
+      </ul>
+
+    </div>
     </div>
   </nav>
 

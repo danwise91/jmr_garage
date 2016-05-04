@@ -1,5 +1,6 @@
+
 <style>
-.div1 {
+.div2 {
     width: 200px;
     height: 90px;
     border: 1px solid blue;
@@ -7,11 +8,9 @@
 </style>
 
 <% @categories.sort_by(&:name).each do |category|%>
-
 <div class="col-md-4">
-
 <a href="/categories/<%=category.id%>">
-  <div class="div1">
+  <div class="div2">
   <h3><%= category.name%> [<%= category.parts.count%>]</h3>
 </div>
     </div>

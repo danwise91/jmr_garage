@@ -50,6 +50,12 @@ Rails.application.routes.draw do
 
   get "paypal_express/checkout"
 
+   get "oil_change" => 'home#oil_change', as: 'oil_change'
+
+   get "adjustments" => 'home#adjustments', as: 'adjustments'
+
+   get "tunning" => 'home#tunning', as: 'tunning'
+   #cannot be in the application controller
 
   # delete 'parts/:id', to: 'parts#destroy'
 
