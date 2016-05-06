@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'paperclip'
-gem 'aws-sdk', '< 2.0'
+gem 'aws-sdk', '~> 2.3'
 
 gem 'activemerchant', '~> 1.46.0'
 gem 'carrierwave', '~> 0.10.0'

@@ -1,6 +1,6 @@
 class PartsController < ApplicationController
   before_filter :authorize, :except => [:index, :show]
-
+  
   def index
     @parts = Part.all
     @categories = Category.all
