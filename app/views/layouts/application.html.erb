@@ -42,19 +42,15 @@
 </div>
 
         <ul class="nav navbar-nav">
-          <li><% unless current_user%><%= link_to "Sign up", signup_path %><%end%></a>
-          <li><% unless current_user %> <%= link_to "Log In", login_path %> <%end%>
-            <% if current_user%> <%= link_to "Hello, #{current_user.first_name}", user_path(id: current_user.id)%> <%end%>
-            <% if facebook_user%> <%= link_to "#{facebook_user.name}", user_path(id: facebook_user.id)%> <%end%></a>
-          <li class=""> <% if current_user%> <%= link_to "Log Out", logout_path%><%end%>
-          </li>
-          </a></li>
+          <li><% unless current_user%><%= link_to "Sign up", signup_path %><%end%></li>
+          <li><% unless current_user %> <%= link_to "Log In", login_path %> <%end%></li>
+          <li>  <% if current_user%> <%= link_to "Hello, #{current_user.first_name}", user_path(id: current_user.id)%> <%end%></li>
+        <li> <% if facebook_user%> <%= link_to "#{facebook_user.name}", user_path(id: facebook_user.id)%> <%end%></li>
+          <li class=""> <% if current_user%> <%= link_to "Log Out", logout_path%><%end%></li>
           <li><% unless current_user %><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in"%><%end%></a>
           </li>
-
-          <li class="">
-              <%= link_to "Parts", parts_path%>
-            </li>
+          <li><%= link_to "Parts", parts_path%></li>
+          </ul>
       </div>
 
       <div class="dropdown">

@@ -1,5 +1,6 @@
 <%if logged_in?%>
-<div>
-<li><%= comment.content%> by: <%= comment.user.first_name %> </li>
-</div>
+  <div id=<%= comment.id %>>
+    <li><%= comment.content%> by: <%= comment.user.first_name %> </li>
+    <%= link_to 'destroy', [comment.part, comment], method: :delete, remote: true%>
+  </div>
 <%end%>

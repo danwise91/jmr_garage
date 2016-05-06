@@ -5,13 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Part.destroy_all
-part1 = Part.create! name: "XO Muffler", price: 40, active: true
-part2 = Part.create! name: "Super turbo", price: 100, active: true
-part3 = Part.create! name: "Speed brakes", price: 50, active: true
-part4 = Part.create! name: "Super Muffler", price: 100, active: true
 
+
+User.delete_all
 Category.destroy_all
+Part.destroy_all
+OrderStatus.delete_all
+
 cat1 = Category.create! name: "Acura"
 cat2 = Category.create! name: "BMW"
 cat3 = Category.create! name: "Ford"
@@ -28,6 +28,11 @@ Category.create! name: "VW"
 Category.create! name: "Mini"
 Category.create! name: "Wheels"
 
+part1 = Part.create! name: "XO Muffler", price: 40, active: true, category: cat1
+part2 = Part.create! name: "Super turbo", price: 100, active: true, category: cat1
+part3 = Part.create! name: "Speed brakes", price: 50, active: true, category: cat2
+part4 = Part.create! name: "Super Muffler", price: 100, active: true, category: cat3
+
 cat1.parts << part1
 cat1.save
 
@@ -37,9 +42,9 @@ cat2.save
 cat3.parts << part3
 cat3.save
 
-OrderStatus.delete_all
 OrderStatus.create! name: "In Progress"
 OrderStatus.create! name: "Placed"
 OrderStatus.create! name: "Shipped"
 OrderStatus.create! name: "Cancelled"
+
 User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')

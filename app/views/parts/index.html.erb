@@ -16,7 +16,7 @@
     <% @parts.sort_by(&:name).each do |part|%>
     <div class="row">
       <div align="center">
-    <a href="/parts/<%=part.id%>"><%= image_tag part.avatar.url(:square)%><%= part.name%></a>
+         <a href="/parts/<%=part.id%>"><%= image_tag part.avatar.url(:square)%><%= part.name%></a>
     <%if part.discount?%>
     Discount! <%= part.discount%>
     <%end%>

@@ -49,13 +49,6 @@ ActiveRecord::Schema.define(version: 20160407155939) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "conversations", force: :cascade do |t|
-    t.integer  "sender_id"
-    t.integer  "recipient_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
   create_table "line_items", force: :cascade do |t|
     t.integer  "part_id"
     t.integer  "cart_id"
@@ -68,17 +61,6 @@ ActiveRecord::Schema.define(version: 20160407155939) do
   add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
   add_index "line_items", ["order_id"], name: "index_line_items_on_order_id", using: :btree
   add_index "line_items", ["part_id"], name: "index_line_items_on_part_id", using: :btree
-
-  create_table "messages", force: :cascade do |t|
-    t.text     "body"
-    t.integer  "conversation_id"
-    t.integer  "user_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
-  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
 
   create_table "order_items", force: :cascade do |t|
     t.integer  "part_id"
@@ -156,8 +138,6 @@ ActiveRecord::Schema.define(version: 20160407155939) do
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "orders"
   add_foreign_key "line_items", "parts"
-  add_foreign_key "messages", "conversations"
-  add_foreign_key "messages", "users"
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "parts"
   add_foreign_key "orders", "order_statuses"
