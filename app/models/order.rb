@@ -3,7 +3,7 @@ class Order < ActiveRecord::Base
 
   PAYMENT_TYPES = ["Check", "Credit card", "Purchase Order"]
   validates :name, :address, :email, presence: true
-  validates :pay_type, inclusion: PAYMENT_TYPES
+  # validates :pay_type, inclusion: PAYMENT_TYPES
 
   attr_accessor :card_security_code
   attr_accessor :credit_card_number
