@@ -1,7 +1,7 @@
 class Order < ActiveRecord::Base
   require "active_merchant/billing/rails"
 
-  PAYMENT_TYPES = ["Check", "Credit card", "Purchase Order"]
+  PAYMENT_TYPES = ["Visa", "Chase", "Mastercard"]
   validates :name, :address, :email, presence: true
   # validates :pay_type, inclusion: PAYMENT_TYPES
 
