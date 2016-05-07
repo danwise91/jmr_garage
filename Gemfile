@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails_12factor', group: :production
 
 gem 'paperclip'
-gem 'aws-sdk', '< 2.0'
+gem 'aws-sdk-v1'
 
 gem 'activemerchant', '~> 1.46.0'
 gem 'carrierwave', '~> 0.10.0'
