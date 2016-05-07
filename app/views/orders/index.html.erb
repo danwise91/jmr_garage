@@ -1,4 +1,5 @@
 <h1>Payment Attempts</h1>
+<% flash[:alert]="unauthorized access"%>
 <% if current_user.admin? %>
 <div class="well">
 </div>
@@ -31,4 +32,4 @@
     </tr>
   <% end %>
 </table>
-<%end%> 
+<%end%>
