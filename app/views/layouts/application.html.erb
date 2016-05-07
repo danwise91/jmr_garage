@@ -6,6 +6,10 @@
   text-align: center;
   transform: translate(250%, 0);
 }
+.text{
+  font-family: "Impact";
+  font-style:italic;
+}
 }
 </style>
 
@@ -73,9 +77,11 @@
 
 <div class="container">
   <div class="row">
+    <div class=text>
     <div class="col-xs-6">
       <h1><%= link_to "SpeedWay Garage", root_path %></h1>
     </div>
+  </div>
     <% if current_user && current_user.cart%>
     <div id="cart">
       <%= render current_user.cart%>
