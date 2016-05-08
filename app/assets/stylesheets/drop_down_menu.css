@@ -1,0 +1,6 @@
+.dropdown-menu {
+  right: 300%;
+  right: auto;
+  text-align: center;
+  transform: translate(250%, 0);
+}

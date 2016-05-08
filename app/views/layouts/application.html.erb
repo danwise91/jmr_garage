@@ -1,17 +1,5 @@
 <!DOCTYPE html>
-<style>
-.dropdown-menu {
-  left: 50%;
-  right: auto;
-  text-align: center;
-  transform: translate(250%, 0);
-}
-.text{
-  font-family: "Impact";
-  font-style:italic;
-}
-}
-</style>
+
 
 <html>
 <head>
@@ -57,12 +45,14 @@
           </ul>
       </div>
 
+
       <div class="dropdown">
         <button class="btn btn-default dropdown-toggle"  id="dropdownMenu1"
         data-toggle= "dropdown" aria-haspopup="true" aria-expanded="true">
         Our Services
         <span class="caret"></span>
       </button>
+      <%= stylesheet_link_tag "drop_down_menu", media: 'all'%>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
         <li><a href="/oil_change">Oil Change</a></li>
         <li><a href="/tunning">Tuning</a></li>
@@ -74,10 +64,11 @@
   </nav>
 
 
+<%=stylesheet_link_tag "title_text", media: 'all'%>
 
 <div class="container">
   <div class="row">
-    <div class=text>
+    <div id=texttwo>
     <div class="col-xs-6">
       <h1><%= link_to "SpeedWay Garage", root_path %></h1>
     </div>
